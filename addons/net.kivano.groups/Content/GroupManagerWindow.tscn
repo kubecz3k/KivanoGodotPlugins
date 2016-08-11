@@ -1,0 +1,90 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://addons/net.kivano.groups/Content/GroupManagerWindow.gd" type="Script" id=1]
+[ext_resource path="res://addons/net.kivano.groups/Content/GroupInfoWin/GroupInfoWin.tscn" type="PackedScene" id=2]
+
+[node name="Group Manager" type="Control"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+script/script = ExtResource( 1 )
+
+[node name="Title" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 2.0
+margin/top = 5.0
+margin/right = 114.0
+margin/bottom = 19.0
+text = "Groups"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="GroupList" type="ItemList" parent="."]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 20.0
+margin/right = 0.0
+margin/bottom = 0.0
+
+[node name="GroupDesc" parent="." instance=ExtResource( 2 )]
+
+visibility/visible = false
+
+[node name="RefreshBtn" type="Button" parent="."]
+
+anchor/left = 1
+anchor/right = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 65.0
+margin/top = 3.0
+margin/right = 5.0
+margin/bottom = 23.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Refresh"
+flat = false
+
+[node name="debug" type="RichTextLabel" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 5.0
+margin/top = 65.0
+margin/right = 348.0
+margin/bottom = 240.0
+bbcode/enabled = true
+bbcode/bbcode = ""
+visible_characters = -1
+
+[connection signal="item_activated" from="GroupList" to="." method="_on_GroupList_item_activated"]
+
+[connection signal="onSave" from="GroupDesc" to="." method="_on_GroupDesc_onSave"]
+
+[connection signal="pressed" from="RefreshBtn" to="." method="_on_RefreshBtn_pressed"]
+
+

@@ -1,0 +1,206 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://addons/net.kivano.groups/Content/GroupInfoWin/GroupInfoWin.gd" type="Script" id=1]
+[ext_resource path="res://addons/net.kivano.groups/Content/GroupInfoWin/AddMethodPopup/AddMethodPopup.tscn" type="PackedScene" id=2]
+
+
+[node name="GroupDesc" type="WindowDialog"]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 258.0
+margin/top = 268.0
+margin/right = -330.0
+margin/bottom = -288.0
+popup/exclusive = false
+window/title = "Group"
+script/script = ExtResource( 1 )
+path2GroupManagerRoot = NodePath("..")
+
+[node name="titleDesc" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 1.0
+margin/top = 13.0
+margin/right = 67.0
+margin/bottom = 27.0
+text = "Description:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="description" type="TextEdit" parent="."]
+
+anchor/right = 1
+hint/tooltip = "Describe what is purpose of this group here."
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 4.0
+margin/top = 30.0
+margin/right = 6.0
+margin/bottom = 155.0
+syntax_highlighting = false
+show_line_numbers = false
+highlight_all_occurrences = false
+caret/block_caret = false
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
+
+[node name="titleMethods" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 163.0
+margin/right = 121.0
+margin/bottom = 177.0
+text = "Required Methods:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="methodList" type="ItemList" parent="."]
+
+anchor/right = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 2.0
+margin/top = 180.0
+margin/right = 5.0
+margin/bottom = 293.0
+
+[node name="editDescriptionBtn" type="Button" parent="."]
+
+anchor/left = 1
+anchor/right = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 117.0
+margin/top = 10.0
+margin/right = 5.0
+margin/bottom = 30.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Edit description"
+flat = false
+
+[node name="addMethodBtn" type="Button" parent="."]
+
+anchor/left = 1
+anchor/right = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 30.0
+margin/top = 160.0
+margin/right = 10.0
+margin/bottom = 180.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "+"
+flat = false
+
+[node name="removeMethod" type="Button" parent="."]
+
+anchor/left = 1
+anchor/right = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 56.0
+margin/top = 160.0
+margin/right = 36.0
+margin/bottom = 180.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "-"
+flat = false
+
+[node name="saveBtn" type="Button" parent="."]
+
+anchor/left = 1
+anchor/top = 1
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 124.0
+margin/top = 248.0
+margin/right = 1.0
+margin/bottom = 219.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Save Changes"
+flat = false
+
+[node name="AddMethodPopup" parent="." instance=ExtResource( 2 )]
+
+visibility/visible = false
+
+[node name="titleMembers" type="Label" parent="."]
+
+anchor/top = 1
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 1.0
+margin/top = 228.0
+margin/right = 122.0
+margin/bottom = 214.0
+text = "Member scenes:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="members" type="ItemList" parent="."]
+
+anchor/top = 1
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 3.0
+margin/top = 211.0
+margin/right = 4.0
+margin/bottom = 8.0
+
+[connection signal="pressed" from="editDescriptionBtn" to="." method="_on_editDescriptionBtn_pressed"]
+
+[connection signal="pressed" from="addMethodBtn" to="." method="_on_addMethodBtn_pressed"]
+
+[connection signal="pressed" from="removeMethod" to="." method="_on_removeMethod_pressed"]
+
+[connection signal="pressed" from="saveBtn" to="." method="_on_saveBtn_pressed"]
+
+[connection signal="onMethodSave" from="AddMethodPopup" to="." method="_on_AddMethodPopup_onMethodSave"]
+
+
