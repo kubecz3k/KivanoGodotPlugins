@@ -3,8 +3,7 @@
 [ext_resource path="res://TestProjectContents/SmartExtender/Test1/Hero/Hero.gd" type="Script" id=1]
 [ext_resource path="res://TestProjectContents/assets/playerShip2_blue.png" type="Texture" id=2]
 
-
-[node name="Hero" type="Node2D"]
+[node name="Hero" type="Node2D" groups=[ "Character" ]]
 
 script/script = ExtResource( 1 )
 
