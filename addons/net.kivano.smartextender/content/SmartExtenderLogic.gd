@@ -35,7 +35,7 @@ func _notification(what):
 	elif(what == NOTIFICATION_READY):
 		if(get_tree().is_editor_hint()):
 			 editorPlugin.get_selection().connect("selection_changed", self, "_onUserNodeSelectionChanged");
-#		if(get_tree().is_editor_hint()): hide();
+#		hide();
 
 ##################################################################################
 #########                       Getters and Setters                      #########
@@ -62,13 +62,14 @@ func _onUserNodeSelectionChanged():
 	selectedNodeLabel.set_text(selectedNode.get_name())
 	
 	if(selectedNode.get_script()!=null):
-		show();
+		get_node("Button").set_disabled(false);
 		return;
 	
 	if(selectedNode.get_filename()!=""):
-		show();
+		get_node("Button").set_disabled(false);
 	else:
-		hide();
+		get_node("Button").set_disabled(true);
+		
 
 func _on_Button_pressed():
 	call_deferred("popup");

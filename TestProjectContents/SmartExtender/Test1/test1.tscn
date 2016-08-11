@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://TestProjectContents/SmartExtender/Test1/test1.gd" type="Script" id=1]
+[ext_resource path="res://TestProjectContents/SmartExtender/Test1/Effects/BaseSmoke/BaseSmoke.tscn" type="PackedScene" id=2]
+[ext_resource path="res://TestProjectContents/SmartExtender/Test1/Hero/Hero.tscn" type="PackedScene" id=3]
+[ext_resource path="res://TestProjectContents/SmartExtender/Test1/helper_scripts/CommonHelperScript.gd" type="Script" id=4]
+[ext_resource path="res://addons/net.kivano.fsm/content/fsm.gd" type="Script" id=5]
+[ext_resource path="res://addons/net.kivano.fsm/icon.png" type="Texture" id=6]
+
+[node name="TemplateScene" type="Node"]
+
+script/script = ExtResource( 1 )
+
+[node name="Smoke-NoScriptScn" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 461.177, 246.382 )
+
+[node name="Hero-ScriptScn" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 316.777, 261.725 )
+
+[node name="Script-Node" type="Position2D" parent="."]
+
+script/script = ExtResource( 4 )
+
+[node name="Fsm-Plugin" type="Node" parent="."]
+
+script/script = ExtResource( 5 )
+__meta__ = { "_editor_icon":ExtResource( 6 ) }
+path2LogicRoot = NodePath("..")
+onlyActiveStateOnTheScene = true
+transitionsHardcodedInStates = false
+initManually = false
+updateMode = 0
+"Initial state:" = ""
+"Create new State/Subdirectory for states" = "FSM"
+"Create new State/Create state with name:" = null
+
+[node name="Cant" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="extend" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="node" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="that's not a scene" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="or a script" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+
