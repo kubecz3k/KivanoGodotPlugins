@@ -1,15 +1,29 @@
 extends "res://addons/net.kivano.fsm/content/FSMState.gd";
+################################### R E A D M E ##################################
+# For more informations check script attached to FSM node
+#
+#
 
-#  State usually is performimg logic based on variables in external node, like 'Enemy'. This variable
-#  usually points to this node. It dont have any other purpose other than to be available for child states.
-#var logicRoot; 
+##################################################################################
+#####  Variables (Constants, Export Variables, Node Vars, Normal variables)  #####
+######################### var myvar setget myvar_set,myvar_get ###################
+#if you are using 'Transitions Hardcoded inside States' you will usually want to cache next state
+var nextStateID; 
 
-# Reference to parent FSM node, can be used to acces FSM functions and variables.
-#var fsm;
+##################################################################################
+#########                       Getters and Setters                      #########
+##################################################################################
+#you will want to use those
+func getFSM(): return fsm; #defined in parent class
+func getLogicRoot(): return logicRoot; #defined in parent class 
 
-#when entering state
+##################################################################################
+#########                    Implemented from ancestor                   #########
+##################################################################################
+
+#when entering state, usually you will want to reset internal state here somehow
 func enter(fromState=null):
-	pass
+	nextStateID = get_name();
 
 #when updating state
 func update(deltaTime):
@@ -22,5 +36,24 @@ func exit(toState=null):
 # If fsm.transitionsHardcodedInStates is true, then this is right place to implement
 # transition logic. Simply return next state id, and fsm will automatically change state.
 func computeNextState():
-	return self.get_name()
+	return nextStateID;
 
+##################################################################################
+#########                       Connected Signals                        #########
+##################################################################################
+
+##################################################################################
+#########     Methods fired because of events (usually via Groups interface)  ####
+##################################################################################
+
+##################################################################################
+#########                         Public Methods                         #########
+##################################################################################
+
+##################################################################################
+#########                         Inner Methods                          #########
+##################################################################################
+
+##################################################################################
+#########                         Inner Classes                          #########
+##################################################################################
