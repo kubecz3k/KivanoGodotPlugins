@@ -190,6 +190,7 @@ func setOnlyActiveStateOnScene(inVal):
 func update(inDeltaTime):
 	if(transitionsHardcodedInStates):
 		var nextStateID = currentState.computeNextState();
+		assert(typeof(nextStateID)==TYPE_STRING);  #ERROR: currentState.computeNextState() is not returning String!" Take a look at currentStateID variable in debugger
 		if(nextStateID!=currentStateID):
 			setState(nextStateID);
 	stateTime += inDeltaTime;
@@ -219,7 +220,6 @@ const INSP_CREATE_NEW_STATE = "Create new State/Create state with name:";
 
 
 var additionalSubDirectory4States = "FSM";
-var newStateName = "" setget createState;
 
 func createState(inStateName):
 	if (inStateName==null) || (inStateName.empty()) || has_node(inStateName): return;
