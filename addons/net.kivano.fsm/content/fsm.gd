@@ -20,8 +20,9 @@ extends Node
 #
 #     string Initial state: you can choose from this list with which state FSM should start.
 #
-#     int updateMode: if set to manual, then it's up to you to update this FSM. Take a look 
-#         at update(inDeltaTime) function.
+#     int updateMode: if set to manual, then it's up to you to update this FSM. In this case 
+#         you need to call FSM.update(inDeltaTime) to update this fsm (usually once per frame)
+#         
 #
 ########## 
 # * Exported variables that are editor helpers:
@@ -66,9 +67,9 @@ const UPDATE_MODE_FIXED_PROCESS = 2;
 
 export (NodePath) var path2LogicRoot = NodePath(".."); 
 export (bool) var onlyActiveStateOnTheScene = true setget setOnlyActiveStateOnScene; 
-export (bool) var transitionsHardcodedInStates = false; 
+export (bool) var transitionsHardcodedInStates = true; 
 export (bool) var initManually = false; 
-export (int, "Manual", "Process", "Fixed") var updateMode = UPDATE_MODE_MANUAL;
+export (int, "Manual", "Process", "Fixed") var updateMode = UPDATE_MODE_PROCESS;
 
 var initStateID = "" setget setInitState; #id of initial state for this fsm (id is the same as state node name)
 var currentStateID = initStateID;
