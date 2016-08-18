@@ -139,10 +139,12 @@ func createSceneFromDialog():
 	scnTemplateContent = scnTemplateContent.replace("KIV_NEW_NODE_NAME", newSceneNodeName);
 	scnTemplateContent = scnTemplateContent.replace("KIV_NODE_TYPE", scriptType);
 	
-	createFileWithContent(newSceneFilepath, scnTemplateContent);
+	call_deferred("createFileWithContent",newSceneFilepath, scnTemplateContent); #want to avoid ovverride dialog
+#	createFileWithContent(newSceneFilepath, scnTemplateContent); 
 	
 	#
-	saveExtendedScriptOnDisk(selectedNode, newSceneFilepath);
+	call_deferred("saveExtendedScriptOnDisk",selectedNode, newSceneFilepath); #want to avoid ovverride dialog
+#	saveExtendedScriptOnDisk(selectedNode, newSceneFilepath);
 
 func saveExtendedScriptOnDisk(inBaseScnNode, inNewSceneFilepath):
 	if(inBaseScnNode.get_script()==null): return "";
