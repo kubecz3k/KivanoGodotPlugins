@@ -20,13 +20,16 @@ func getLogicRoot(): return logicRoot; #defined in parent class
 ##################################################################################
 #########                    Implemented from ancestor                   #########
 ##################################################################################
+#you can transmit parameters if fsm is initialized manually
+func stateInit(inParam1=null,inParam2=null,inParam3=null,inParam4=null, inParam5=null): 
+	pass
 
 #when entering state, usually you will want to reset internal state here somehow
-func enter(fromState=null):
+func enter(fromStateID=null):
 	nextStateID = get_name();
 
-#when updating state
-func update(deltaTime):
+#when updating state, paramX can be used only if updating fsm manually
+func update(deltaTime, param1=null, param2=null, param3=null, param4=null):
 	pass
 
 #when exiting state

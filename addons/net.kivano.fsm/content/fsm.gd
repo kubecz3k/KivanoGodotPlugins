@@ -85,7 +85,7 @@ func _ready():
 		return;
 	init();
 
-func init():
+func init(inStatesParam1=null, inStatesParam2=null, inStatesParam3=null, inStatesParam4=null, inStatesParam5=null):
 	#
 	if(get_tree().is_editor_hint()): return;
 	if(get_child_count()==0): return;
@@ -101,6 +101,7 @@ func init():
 			if(!get_tree().is_editor_hint()):
 				state2Add.logicRoot = get_node(path2LogicRoot);
 				state2Add.fsm = self;
+				state2Add.stateInit(inStatesParam1,inStatesParam2,inStatesParam3,inStatesParam4, inStatesParam5);
 
 	#
 	if(onlyActiveStateOnTheScene):
@@ -188,14 +189,14 @@ func setOnlyActiveStateOnScene(inVal):
 ##################################################################################
 #########                         Public Methods                         #########
 ##################################################################################
-func update(inDeltaTime):
+func update(inDeltaTime, param1=null, param2=null, param3=null, param4=null):
 	if(transitionsHardcodedInStates):
 		var nextStateID = currentState.computeNextState();
 		assert(typeof(nextStateID)==TYPE_STRING);  #ERROR: currentState.computeNextState() is not returning String!" Take a look at currentStateID variable in debugger
 		if(nextStateID!=currentStateID):
 			setState(nextStateID);
 	stateTime += inDeltaTime;
-	return currentState.update(inDeltaTime);
+	return currentState.update(inDeltaTime, param1, param2, param3, param4);
 
 #just an alias for update, for the cases when delta time dont have much sense
 func perform():
