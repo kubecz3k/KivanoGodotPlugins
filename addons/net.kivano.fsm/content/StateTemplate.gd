@@ -28,7 +28,7 @@ func stateInit(inParam1=null,inParam2=null,inParam3=null,inParam4=null, inParam5
 func enter(fromStateID=null):
 	nextStateID = get_name();
 
-#when updating state, paramX can be used only if updating fsm manually
+#when updating state, paramx can be used only if updating fsm manually
 func update(deltaTime, param1=null, param2=null, param3=null, param4=null):
 	pass
 
